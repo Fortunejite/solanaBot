@@ -1,19 +1,18 @@
 import { Schema, model, models, Document, Model } from "mongoose";
 
-interface IUser {
+interface IDeleted {
   telegramId: string;
   secretKey: string;
   publicKey: string;
   seed: string;
 }
 
-export interface IUserDocument extends IUser, Document {}
+export interface IDeletedDocument extends IDeleted, Document {}
 
-const userSchema: Schema<IUserDocument> = new Schema({
+const deletedSchema: Schema<IDeletedDocument> = new Schema({
   telegramId: {
     type: String,
     required: true,
-    unique: true,
   },
   secretKey: {
     type: String,
@@ -29,5 +28,5 @@ const userSchema: Schema<IUserDocument> = new Schema({
   },
 }, {timestamps: true})
 
-const User: Model<IUserDocument> = models.User || model<IUserDocument>('User', userSchema)
-export default User
+const Deleted: Model<IDeletedDocument> = models.Deleted || model<IDeletedDocument>('Deleted', deletedSchema)
+export default Deleted
