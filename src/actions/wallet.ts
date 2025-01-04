@@ -3,6 +3,7 @@ import dbConnect from '../../mongodb';
 import User from '../models/User';
 import { getAccountBalance } from '../utils/solana';
 import { PublicKey } from '@solana/web3.js';
+import { printWithNineDecimals } from '../utils/formating';
 
 export default async function wallet(ctx: Context) {
   const userId = ctx.from?.id;
@@ -16,7 +17,7 @@ export default async function wallet(ctx: Context) {
     `Your Wallet:
   
   Address:<code>${user?.publicKey}</code>
-  Balance: <b>${balance}</b> SOL
+  Balance: <b>${printWithNineDecimals(balance)}</b> SOL
   
   Tap to copy the address and send SOL to deposit.`,
     {
