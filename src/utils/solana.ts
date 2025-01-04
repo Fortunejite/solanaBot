@@ -12,7 +12,7 @@ import bs58 from 'bs58';
 import Deleted from '../models/Deleted';
 import dbConnect from '../../mongodb';
 
-const RPC_URL = 'https://api.devnet.solana.com';
+const RPC_URL = 'https://api.testnet.solana.com';
 
 export const createWallet = async (userId: number) => {
   const mnemonic = generateMnemonic();
